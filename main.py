@@ -13,11 +13,10 @@ from bs4 import BeautifulSoup
 from datetime import datetime, timedelta, timezone
 
 # ============ CONFIGURATION ============
-# Best practice for GitHub Actions: read from secrets via os.getenv()
-# It will fall back to your provided strings if environment variables are not set.
-BOT_TOKEN = os.getenv("BOT_TOKEN", "8714686561:AAGCBPEIwHFMdI6bFa1_LXNbIxM1ipsteKY")
-CHAT_ID = os.getenv("CHAT_ID", "1161965312")
-DRY_RUN = os.getenv("DRY_RUN", "False").lower() == "true"
+# Use "or" so that if GitHub Actions passes an empty string, it falls back to your token
+BOT_TOKEN = "8714686561:AAGCBPEIwHFMdI6bFa1_LXNbIxM1ipsteKY"
+CHAT_ID = "1161965312"
+DRY_RUN = (os.getenv("DRY_RUN") or "False").lower() == "true"
 
 IST = timezone(timedelta(hours=5, minutes=30))
 TG_LIMIT = 4000  # Telegram max is 4096
