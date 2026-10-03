@@ -2,8 +2,10 @@ name: IPO Telegram Bot
 
 on:
   schedule:
-    # Runs at 10:00 AM UTC (3:30 PM IST) every day. Adjust the cron time as needed.
+    # Existing: Runs at 10:00 AM UTC every day
     - cron: '0 10 * * *'
+    # New: Runs every 2 hours on weekdays (Monday through Friday)
+    - cron: '0 */2 * * 1-5'
   workflow_dispatch: # Allows you to trigger the workflow manually from the GitHub UI
 
 jobs:
